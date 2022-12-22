@@ -1,0 +1,29 @@
+2022-12-22T21:48:49.937+05:00  INFO 32261 --- [main] com.example.YouTubeBackendApplication    : Starting YouTubeBackendApplication using Java 17.0.5 with PID 32261 (/home/javaDev/IdeaProjects/YouTube_Backend/target/classes started by javaDev in /home/javaDev/IdeaProjects/YouTube_Backend)
+2022-12-22T21:48:49.973+05:00 DEBUG 32261 --- [main] com.example.YouTubeBackendApplication    : Running with Spring Boot v3.0.0, Spring v6.0.2
+2022-12-22T21:48:49.976+05:00  INFO 32261 --- [main] com.example.YouTubeBackendApplication    : No active profile set, falling back to 1 default profile: "default"
+2022-12-22T21:48:51.652+05:00  INFO 32261 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2022-12-22T21:48:51.778+05:00  INFO 32261 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 112 ms. Found 7 JPA repository interfaces.
+2022-12-22T21:48:52.702+05:00  INFO 32261 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2022-12-22T21:48:52.715+05:00  INFO 32261 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-12-22T21:48:52.716+05:00  INFO 32261 --- [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.1]
+2022-12-22T21:48:52.844+05:00  INFO 32261 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2022-12-22T21:48:52.845+05:00  INFO 32261 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2757 ms
+2022-12-22T21:48:53.034+05:00  INFO 32261 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-12-22T21:48:53.107+05:00  INFO 32261 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.1.5.Final
+2022-12-22T21:48:53.311+05:00  WARN 32261 --- [main] org.hibernate.orm.deprecation            : HHH90000021: Encountered deprecated setting [javax.persistence.sharedCache.mode], use [jakarta.persistence.sharedCache.mode] instead
+2022-12-22T21:48:53.480+05:00  INFO 32261 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2022-12-22T21:48:53.799+05:00  INFO 32261 --- [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@34f23816
+2022-12-22T21:48:53.802+05:00  INFO 32261 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2022-12-22T21:48:53.870+05:00  INFO 32261 --- [main] SQL dialect                              : HHH000400: Using dialect: org.hibernate.dialect.PostgreSQLDialect
+2022-12-22T21:48:55.228+05:00  INFO 32261 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-12-22T21:48:55.255+05:00  INFO 32261 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2022-12-22T21:48:55.719+05:00  INFO 32261 --- [main] o.apache.catalina.core.StandardContext   : Suspicious URL pattern: [/profile/admin*] in context [], see sections 12.1 and 12.2 of the Servlet specification
+2022-12-22T21:48:55.753+05:00 DEBUG 32261 --- [main] com.example.config.jwt.TokenFilter       : Filter 'tokenFilter' configured for use
+2022-12-22T21:48:55.755+05:00 DEBUG 32261 --- [main] com.example.config.jwt.JwtFilter         : Filter 'jwtFilter' configured for use
+2022-12-22T21:48:56.008+05:00  WARN 32261 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2022-12-22T21:48:57.075+05:00  INFO 32261 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@406d922, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@56017274, org.springframework.security.web.context.SecurityContextHolderFilter@35c9f527, org.springframework.security.web.header.HeaderWriterFilter@55465bfc, org.springframework.security.web.authentication.logout.LogoutFilter@3b9c05f, com.example.config.jwt.JwtFilter@1a6a4595, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@451f3f66, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@5d1eb214, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@2bf0bb93, org.springframework.security.web.access.ExceptionTranslationFilter@227c0cf7, org.springframework.security.web.access.intercept.AuthorizationFilter@57a0aeb8]
+2022-12-22T21:48:57.715+05:00  INFO 32261 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2022-12-22T21:48:57.732+05:00  INFO 32261 --- [main] com.example.YouTubeBackendApplication    : Started YouTubeBackendApplication in 9.009 seconds (process running for 11.42)
+2022-12-22T21:49:58.614+05:00  INFO 32261 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-12-22T21:49:58.615+05:00  INFO 32261 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2022-12-22T21:49:58.616+05:00  INFO 32261 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
