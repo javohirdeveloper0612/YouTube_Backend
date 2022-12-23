@@ -20,14 +20,7 @@ public class SecurityFilterConfig {
         FilterRegistrationBean<Filter> bean = new FilterRegistrationBean<>();
         bean.setFilter(tokenFilter);
         bean.addUrlPatterns("/profile/admin*");
-        bean.addUrlPatterns("/article_type/*");
-        bean.addUrlPatterns("/region/*");
-        bean.addUrlPatterns("/email_history/*");
-        bean.addUrlPatterns("/article/admin/*");
-        bean.addUrlPatterns("/article_like/*");
-        bean.addUrlPatterns("/saved_article/*");
-        bean.addUrlPatterns("/comment/sec/*");
-        bean.addUrlPatterns("/comment_like/*");
+
         return bean;
 
 
