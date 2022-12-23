@@ -100,14 +100,12 @@ public class ChannelService {
         {
             entity.setName(dto.getName());
             entity.setDescription(dto.getDescription());
-            entity.setStatus(dto.getStatus());
             repository.save(entity);
             return true ;
         }
         return false ;
 
     }
-
 
     public Boolean updateChannelPhoto(ChannelDTO dto, Integer id, Language language) {
         Optional<ChannelEntity> optional = repository.findById(dto.getId());
@@ -155,26 +153,70 @@ public class ChannelService {
 
     public Page<ChannelDTO> getPageList(Integer page, Integer size) {
 
-//        Sort sort = Sort.by(Sort.Direction.DESC, "createdDate");
-//        Pageable pageable = PageRequest.of(page, size, sort);
-//
-//        Page<ChannelDTOMapper> pageObj = repository.getList(pageable );
-//
-//        List<EmailHistoryDTO> dtoList = new ArrayList<>();
-//
-//        for (EmailHistoryMapper emailHistoryMapper : pageObj) {
-//            EmailHistoryDTO dto = new EmailHistoryDTO();
-//            dto.setId(emailHistoryMapper.getId());
-//            dto.setTo_email(emailHistoryMapper.getTo_email());
-//            dto.setTitle(emailHistoryMapper.getTitle());
-//            dto.setMessage(emailHistoryMapper.getMessage());
-//            dto.setCreatedDate(emailHistoryMapper.getCreatedDate());
-//            dtoList.add(dto) ;
-//        }
-//
-//
-//        return new PageImpl<>(dtoList, pageable, pageObj.getTotalElements());
-        return  null ;
+        Sort sort = Sort.by(Sort.Direction.DESC, "createdDate");
+        Pageable pageable = PageRequest.of(page, size, sort);
 
+        Page<ChannelDTOMapper> pageObj = repository.getList(pageable );
+
+        List<ChannelDTO> dtoList = new ArrayList<>();
+
+        for (ChannelDTOMapper mapper : pageObj) {
+            ChannelDTO dto = new ChannelDTO();
+            dto.setName(mapper.getName());
+            dto.setDescription(mapper.getDescription());
+            dto.setBanner(mapper.getBanner());
+            dto.setPhoto(mapper.getPhoto());
+            dtoList.add(dto);
+        }
+
+
+        return new PageImpl<>(dtoList, pageable, pageObj.getTotalElements());
+
+
+    }
+
+    public ChannelDTO findById(String id , Integer profile_Id, Language language) {
+
+        Optional<ProfileEntity> optional = profileRepository.findById(profile_Id);
+
+        if (optional.isEmpty()){
+            throw new ItemNotFoundException(
+                    resourceBundleService.getMessage("item.not.found", language ));
+        }
+
+        Optional<ChannelEntity> entityOptional = repository.findById(id);
+
+        ChannelEntity entity = entityOptional.get();
+        ChannelDTO dto = new ChannelDTO() ;
+        dto.setId(entity.getId());
+        dto.setStatus(entity.getStatus());
+        dto.setName(entity.getName());
+        dto.setDescription(entity.getDescription());
+        dto.setBanner(entity.getBanner());
+        dto.setPhoto(entity.getPhoto());
+        return dto  ;
+    }
+
+    public Boolean updateChannelStatus(ChannelDTO dto, Integer id, Language language) {
+
+        Optional<ChannelEntity> optional = repository.findById(dto.getId());
+
+        if (optional.isEmpty()) {
+            throw new ItemNotFoundException(
+                    resourceBundleService.getMessage("item.not.found", language, dto.getId()));
+        }
+
+
+        ChannelEntity entity = optional.get();
+        Optional<ProfileEntity> byId = profileRepository.findById(id);
+        ProfileEntity profile = byId.get();
+
+        if( profile.getRole().equals(ProfileRole.ROLE_ADMIN) || profile.getRole().equals(ProfileRole.ROLE_OWNER)  )
+        {
+            entity.setStatus(dto.getStatus());
+            repository.save(entity);
+            return true ;
+        }
+        return false ;
     }
 }
