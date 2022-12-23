@@ -1,0 +1,22 @@
+### registration
+POST localhost:8080/auth/registration
+Content-Type: application/json
+
+{
+  "name": "Toshmat",
+  "surname": "Aliyev",
+  "email": "javoxiryallayev1@gmail.com",
+  "password": "2022"
+}
+
+### login
+POST localhost:8080/auth/login
+Content-Type: application/json
+
+{
+  "email": "mylaptop0612@gmail.com",
+  "password": "2022"
+}
+
+### init admin
+GET localhost:8080/init/admin
