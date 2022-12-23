@@ -18,4 +18,7 @@ public interface EmailHistoryRepository extends CrudRepository<EmailHistoryEntit
 
 
     long countByTo_emailAndCreatedDateBetween(String email, LocalDateTime fromDate, LocalDateTime toDate);
+
+
+
 }
