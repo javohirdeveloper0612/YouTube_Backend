@@ -8,6 +8,9 @@ public class YouTubeBackendApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(YouTubeBackendApplication.class, args);
+
+        System.out.println("Hello World");
     }
+
 
 }
