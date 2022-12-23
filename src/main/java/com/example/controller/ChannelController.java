@@ -92,8 +92,39 @@ public class ChannelController {
     @Operation(summary = "Channel get by admin  method", description = "This method used to create email from only admin")
     @PostMapping("/getEmailByAdmin")
     public ResponseEntity<?> getEmailPaginationByAdmin(@RequestParam(value = "page", defaultValue = "0") Integer page , @RequestParam( value = "size" , defaultValue = "3") Integer size){
+
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        CustomUserDetail user = (CustomUserDetail) authentication.getPrincipal();
+
         Page<ChannelDTO> result = service.getPageList(page , size);
         return ResponseEntity.ok(result);
     }
+
+    //   6. Get Channel By Id
+    public ResponseEntity<?> getChannelById(@RequestParam String id , @RequestHeader(value = "Accept-Language", defaultValue = "RU") Language language){
+
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        CustomUserDetail user = (CustomUserDetail) authentication.getPrincipal();
+        log.info("Use get Channel  profileId = " + user.getId()  );
+        ChannelDTO result = service.findById(id , user.getId() ,language);
+
+        return ResponseEntity.ok(result);
+    }
+    // 7. Change Channel Status (ADMIN,USER and OWNER)
+    @PreAuthorize("hasAnyRole('ROLE_USER' , 'ROLE_OWNER')")
+    @Operation(summary = "Method for update comment", description = "This method used to update comment")
+    @PutMapping("/update")
+    public ResponseEntity<?> updateChannelStatus(@RequestBody ChannelDTO dto,
+                                                @RequestHeader(value = "Accept-Language", defaultValue = "RU") Language language) {
+
+
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        CustomUserDetail user = (CustomUserDetail) authentication.getPrincipal();
+
+        Boolean result = service.updateChannelStatus(dto, user.getId(), language);
+
+        return ResponseEntity.ok(result);
+    }
+
 
 }

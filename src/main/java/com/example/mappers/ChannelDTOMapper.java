@@ -13,8 +13,12 @@ public class ChannelDTOMapper {
 
     private String description;
 
-    private ChannelStatus status;
-
     private String banner;
 
+    public ChannelDTOMapper(String name, String photo, String description, String banner) {
+        this.name = name;
+        this.photo = photo;
+        this.description = description;
+        this.banner = banner;
+    }
 }
