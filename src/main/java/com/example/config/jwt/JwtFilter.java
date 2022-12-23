@@ -57,7 +57,7 @@ public class JwtFilter extends OncePerRequestFilter {
         } catch (JwtException | UsernameNotFoundException e) {
             response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
             response.setHeader("Message", "Token Not Valid");
-            return;
+
         }
 
     }

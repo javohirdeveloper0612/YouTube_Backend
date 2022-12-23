@@ -24,7 +24,7 @@ public class CustomUserDetailsService implements UserDetailsService {
         Optional<ProfileEntity> profile = repository.findByEmail(login);
 
         if (profile.isEmpty()) {
-            throw new UsernameNotFoundException("Bad Cretensional");
+            throw new UsernameNotFoundException("Bad Credentials");
         }
 
         return new CustomUserDetail(profile.get());

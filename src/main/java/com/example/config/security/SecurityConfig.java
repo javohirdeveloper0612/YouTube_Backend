@@ -48,7 +48,6 @@ public class SecurityConfig {
 
         http.csrf().disable().cors().disable().authorizeHttpRequests()
                 .requestMatchers("/auth/**").permitAll()
-                .requestMatchers(HttpMethod.GET, "/init/admin").permitAll()
                 .requestMatchers( "/swagger-ui/index.html").permitAll()
                 .anyRequest().authenticated()
                 .and().addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class);
