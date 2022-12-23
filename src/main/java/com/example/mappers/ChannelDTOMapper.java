@@ -1,17 +1,12 @@
-package com.example.dto;
+package com.example.mappers;
 
-import com.example.entity.ProfileEntity;
 import com.example.enums.ChannelStatus;
-import jakarta.persistence.Column;
 import lombok.Getter;
 import lombok.Setter;
 
 @Getter
 @Setter
-public class ChannelDTO {
-    private String id;
-
-
+public class ChannelDTOMapper {
     private String name;
 
     private String photo;
@@ -22,5 +17,4 @@ public class ChannelDTO {
 
     private String banner;
 
-    private ProfileEntity profile_id;
 }
