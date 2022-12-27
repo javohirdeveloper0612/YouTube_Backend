@@ -15,20 +15,24 @@ import com.example.repository.ProfileRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.*;
 import org.springframework.stereotype.Service;
-
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
 @Service
 public class ChannelService {
-    @Autowired
-    private ChannelRepository repository ;
-    @Autowired
-    private ResourceBundleService resourceBundleService ;
-    @Autowired
-    private ProfileRepository profileRepository ;
+
+    private final ChannelRepository repository ;
+    private final ResourceBundleService resourceBundleService ;
+    private  final ProfileRepository profileRepository ;
+
+    public ChannelService(ChannelRepository repository,
+                          ResourceBundleService resourceBundleService,
+                          ProfileRepository profileRepository) {
+        this.repository = repository;
+        this.resourceBundleService = resourceBundleService;
+        this.profileRepository = profileRepository;
+    }
 
     public ChannelDTO create(ChannelDTO dto, Language language) {
         Optional<ChannelEntity> optional = repository.findById(dto.getId());
@@ -219,4 +223,5 @@ public class ChannelService {
         }
         return false ;
     }
+
 }

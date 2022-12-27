@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("/auth")
 @Tag(name = "Authorization Controller", description = "This controller for authorization")
-public class AuthController {
+public class  AuthController {
 
 
     private final AuthService service;
@@ -29,6 +29,7 @@ public class AuthController {
     @Operation(summary = "Method for registration", description = "This method used to create a user")
     @PostMapping("/registration")
     private ResponseEntity<ProfileResponseDTO> registration(@Valid @RequestBody UserRegistrationDTO dto, @RequestHeader(value = "Accept-Language", defaultValue = "RU") Language language) {
+
         log.info("Registration : email {}, name {}", dto.getEmail(), dto.getName());
         ProfileResponseDTO result = service.registration(dto, language);
         return ResponseEntity.ok(result);

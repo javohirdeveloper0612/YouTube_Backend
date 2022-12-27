@@ -1,25 +1,25 @@
 package com.example.controller;
 
-import com.example.config.security.CustomUserDetail;
 import com.example.dto.EmailHistoryDTO;
 import com.example.service.EmailHistoryService;
 import io.swagger.v3.oas.annotations.Operation;
-import jakarta.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 
 @Slf4j
 @RestController
 @RequestMapping("/email_history")
 public class EmailHistoryController {
-    @Autowired
-    private EmailHistoryService service  ;
+
+    private final EmailHistoryService service  ;
+
+    public EmailHistoryController(EmailHistoryService service) {
+        this.service = service;
+    }
 
     @PreAuthorize("hasRole('ROLE_ADMIN')")
     @Operation(summary = "Email get by admin  method", description = "This method used to create email from only admin")

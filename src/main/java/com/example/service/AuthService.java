@@ -34,7 +34,6 @@ public class AuthService {
 
     public AuthService(ProfileRepository repository, ResourceBundleService resourceBundleService, EmailHistoryService historyService, MailService mailService) {
         this.repository = repository;
-
         this.resourceBundleService = resourceBundleService;
         this.emailHistoryService = historyService;
         this.mailService = mailService;
