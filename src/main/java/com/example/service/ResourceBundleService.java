@@ -20,4 +20,5 @@ public class ResourceBundleService {
     public String getMessage(String code, Language lang, Object... arg) {
         return messageSource.getMessage(code, arg, new Locale(lang.name()));
     }
+
 }

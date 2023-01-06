@@ -1,0 +1,11 @@
+### Upload file
+POST http://localhost:8080/attach/public/upload
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE2NzMwMTgxNzMsInVzZXJuYW1lIjoibXlkcmVhbTd1c2FAZ21haWwuY29tIiwicm9sZSI6IlJPTEVfVVNFUiIsImV4cCI6MTY3MzEwNDU3MywiaXNzIjoia3VudXogdGVzdCBwb3J0YWxpIn0.Dw5DvcZe-LDe1QBn-cWoUPncFWVIsto6G0s5tyUSYVUXqkJ_A1e6V5bdh_CyLnHWCY1L4MzVdTG1ucIqj09urQ
+Content-Type: multipart/form-data; boundary=WebAppBoundary
+
+
+--WebAppBoundary
+Content-Disposition: form-data; name="file"; filename="video.mp4"
+
+#< E:\kaptar.mp4
+< home:/javaDev/video.mp4

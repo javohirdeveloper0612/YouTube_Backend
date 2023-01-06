@@ -1,9 +1,6 @@
 package com.example.service;
 
-import com.example.dto.LoginDTO;
-import com.example.dto.LoginResponseDTO;
-import com.example.dto.ProfileResponseDTO;
-import com.example.dto.UserRegistrationDTO;
+import com.example.dto.*;
 import com.example.entity.EmailHistoryEntity;
 import com.example.entity.ProfileEntity;
 import com.example.enums.Language;
@@ -16,6 +13,7 @@ import com.example.exp.StatusBlockException;
 import com.example.repository.ProfileRepository;
 import com.example.util.JwtUtil;
 import com.example.util.MD5;
+import io.jsonwebtoken.JwtException;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
@@ -23,99 +21,100 @@ import java.util.Optional;
 
 @Service
 public class AuthService {
-
     private final ProfileRepository repository;
 
-    private final ResourceBundleService resourceBundleService;
-
     private final EmailHistoryService emailHistoryService;
+    private final ResourceBundleService resourceBundleService;
 
     private final MailService mailService;
 
-    public AuthService(ProfileRepository repository, ResourceBundleService resourceBundleService, EmailHistoryService historyService, MailService mailService) {
+    public AuthService(ProfileRepository repository, EmailHistoryService emailHistoryService, ResourceBundleService resourceBundleService, MailService mailService) {
         this.repository = repository;
-
+        this.emailHistoryService = emailHistoryService;
         this.resourceBundleService = resourceBundleService;
-        this.emailHistoryService = historyService;
         this.mailService = mailService;
     }
 
     public ProfileResponseDTO registration(UserRegistrationDTO dto, Language language) {
-        Optional<ProfileEntity> exists = repository.findByEmail(dto.getEmail());
-        if (exists.isPresent()) {
-            ProfileEntity entity = exists.get();
-            if (entity.getStatus().equals(ProfileStatus.NOT_ACTIVE)) {
+
+        Optional<ProfileEntity> optional = repository.findByEmail(dto.getEmail());
+        if (optional.isPresent()){
+            ProfileEntity entity = optional.get();
+            if (entity.getStatus().equals(ProfileStatus.NOT_ACTIVE)){
                 repository.delete(entity);
-            } else {
-                throw new EmailAlreadyExistsException(resourceBundleService.getMessage("email.exists", language));
+            }else {
+                throw new EmailAlreadyExistsException(resourceBundleService.getMessage("email.exists",language));
             }
         }
+        Long countMinute= emailHistoryService.getCountInMinute(dto.getEmail());
 
-        Long countInMinute = emailHistoryService.getCountInMinute(dto.getEmail());
-        if (countInMinute > 4) {
-            throw new LimitOutPutException(resourceBundleService.getMessage("resent.limit", language));
+        if (countMinute > 4){
+            throw new LimitOutPutException(resourceBundleService.getMessage("resent.limit",language));
         }
 
-        ProfileEntity entity = new ProfileEntity();
-        entity.setName(dto.getName());
-        entity.setSurname(dto.getSurname());
-        entity.setEmail(dto.getEmail());
-        entity.setPassword(MD5.md5(dto.getPassword()));
+        ProfileEntity profileEntity = new ProfileEntity();
+        profileEntity.setName(dto.getName());
+        profileEntity.setSurname(dto.getSurname());
+        profileEntity.setEmail(dto.getEmail());
+        profileEntity.setPassword(MD5.md5(dto.getPassword()));
 
+        profileEntity.setVisible(true);
+        profileEntity.setStatus(ProfileStatus.NOT_ACTIVE);
+        profileEntity.setCreatedDate(LocalDateTime.now());
+        profileEntity.setRole(ProfileRole.ROLE_USER);
 
+        repository.save(profileEntity);
 
-        entity.setStatus(ProfileStatus.NOT_ACTIVE);
-
-        entity.setRole(ProfileRole.ROLE_USER);
-
-        repository.save(entity);
 
         Thread thread = new Thread() {
             @Override
-            public synchronized void start() {
-                String sb = "Salom qalaysan \n" +
-                        "Bu test message" +
-                        "Click the link : http://localhost:8080/auth/verification/email/" +
-                        JwtUtil.encode(entity.getEmail(), ProfileRole.ROLE_USER);
-                mailService.sendEmail(dto.getEmail(), "Complete Registration", sb);
+            public synchronized  void start(){
+                String str = "Assalomualeykum  \n" +
+                        "tasdiqlash link \n" +
+                        "Click the link http://localhost:7070/auth/verification/email/" +
+                        JwtUtil.encode(profileEntity.getEmail(),ProfileRole.ROLE_USER);
+                        mailService.sendEmail(dto.getEmail(),"Complete Registration",str);
 
-                EmailHistoryEntity emailHistoryEntity = new EmailHistoryEntity();
-                emailHistoryEntity.setTo_email(dto.getEmail());
-                emailHistoryEntity.setMessage(sb);
-                emailHistoryEntity.setCreatedDate(LocalDateTime.now());
+                EmailHistoryEntity emailHistory = new EmailHistoryEntity();
+                emailHistory.setEmail(dto.getEmail());
+                emailHistory.setMessage(str);
+                emailHistory.setCreatedDate(LocalDateTime.now());
 
-                emailHistoryService.create(emailHistoryEntity);
+                emailHistoryService.create(emailHistory);
             }
         };
+
         thread.start();
 
-        return getDTO(entity);
 
+        return getDTO(profileEntity);
     }
 
-    public LoginResponseDTO login(LoginDTO dto, Language language) {
-        Optional<ProfileEntity> optional = repository.findByEmailAndPassword(dto.getEmail(), MD5.md5(dto.getPassword()));
+    public String verification(String jwt) {
+
+
+        JwtDTO jwtDTO;
+        try {
+            jwtDTO = JwtUtil.decodeToken(jwt);
+        } catch (JwtException e) {
+            return "Verification failed";
+        }
+
+        Optional<ProfileEntity> optional = repository.findByEmail(jwtDTO.getUsername());
+
         if (optional.isEmpty()) {
-            throw new LoginOrPasswordWrongException(resourceBundleService.getMessage("credential.wrong", language.name()));
+            return "Verification failed";
         }
 
         ProfileEntity entity = optional.get();
-        if (entity.getStatus().equals(ProfileStatus.BLOCK)) {
-            throw new StatusBlockException("Profile status block");
+
+        if (!entity.getStatus().equals(ProfileStatus.NOT_ACTIVE)) {
+            return "Verification failed";
         }
+        entity.setStatus(ProfileStatus.ACTIVE);
 
-        // TODO
-//        if (entity.getStatus().equals(ProfileStatus.NOT_ACTIVE)){
-//            throw new ProfileNotActiveException("Profile Is Not Active");
-//        }
-
-        LoginResponseDTO responseDTO = new LoginResponseDTO();
-        responseDTO.setName(entity.getName());
-        responseDTO.setSurname(entity.getSurname());
-        responseDTO.setRole(entity.getRole());
-        responseDTO.setToken(JwtUtil.encode(entity.getEmail(), entity.getRole()));
-
-        return responseDTO;
+        repository.save(entity);
+        return "verification success";
     }
 
     public ProfileResponseDTO getDTO(ProfileEntity entity) {
@@ -127,10 +126,30 @@ public class AuthService {
         profileDTO.setEmail(entity.getEmail());
         profileDTO.setStatus(entity.getStatus());
         profileDTO.setRole(entity.getRole());
-
+        profileDTO.setVisible(entity.getVisible());
+        profileDTO.setCreatedDate(entity.getCreatedDate());
 
         return profileDTO;
     }
 
 
+    public LoginResponseDTO login(LoginDTO dto, Language language) {
+        Optional<ProfileEntity> optional = repository.findByEmailAndPassword(dto.getEmail(),MD5.md5(dto.getPassword()));
+
+        if (optional.isEmpty()){
+            throw new LoginOrPasswordWrongException(resourceBundleService.getMessage("creadential.wrong",language));
+        }
+
+        ProfileEntity entity = optional.get();
+        if (entity.getStatus().equals(ProfileStatus.BLOCK)){
+            throw new StatusBlockException(resourceBundleService.getMessage("profile.status.block",language));
+        }
+        LoginResponseDTO responseDTO = new LoginResponseDTO();
+        responseDTO.setName(entity.getName());
+        responseDTO.setSurname(entity.getSurname());
+        responseDTO.setRole(entity.getRole());
+        responseDTO.setToken(JwtUtil.encode(entity.getEmail(),entity.getRole()));
+
+        return responseDTO;
+    }
 }

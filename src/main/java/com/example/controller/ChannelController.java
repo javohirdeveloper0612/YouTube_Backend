@@ -20,7 +20,7 @@ import org.springframework.web.bind.annotation.*;
 @Slf4j
 @RequestMapping("/channel")
 public class ChannelController {
-    @Autowired
+ /*   @Autowired
     private ChannelService service ;
 
     @PreAuthorize("hasRole('ROLE_USER')")
@@ -125,6 +125,6 @@ public class ChannelController {
 
         return ResponseEntity.ok(result);
     }
-
+*/
 
 }

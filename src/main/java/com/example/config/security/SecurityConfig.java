@@ -1,9 +1,10 @@
 package com.example.config.security;
 
+import com.example.config.AuthEntryPointJwt;
 import com.example.config.jwt.JwtFilter;
+import com.example.service.CustomUserDetailsService;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
@@ -22,9 +23,12 @@ public class SecurityConfig {
     private final CustomUserDetailsService userDetailsService;
     private final JwtFilter jwtFilter;
 
-    public SecurityConfig(CustomUserDetailsService userDetailsService, JwtFilter jwtFilter) {
+    private final AuthEntryPointJwt authEntryPointJwt;
+
+    public SecurityConfig(CustomUserDetailsService userDetailsService, JwtFilter jwtFilter, AuthEntryPointJwt authEntryPointJwt) {
         this.userDetailsService = userDetailsService;
         this.jwtFilter = jwtFilter;
+        this.authEntryPointJwt = authEntryPointJwt;
     }
 
 
@@ -46,12 +50,14 @@ public class SecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         // authorization
 
-        http.csrf().disable().cors().disable().authorizeHttpRequests()
+        http.csrf().disable().cors().disable();
+        http.authorizeHttpRequests()
                 .requestMatchers("/auth/**").permitAll()
-                .requestMatchers( "/swagger-ui/index.html").permitAll()
+                .requestMatchers("/attach/public/**").permitAll()
                 .anyRequest().authenticated()
                 .and().addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class);
 
+        http.exceptionHandling().authenticationEntryPoint(authEntryPointJwt);
         return http.build();
     }
 

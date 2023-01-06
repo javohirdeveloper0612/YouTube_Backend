@@ -17,6 +17,8 @@ public class ProfileResponseDTO {
     private String surname;
 
     private String email;
+
+    private boolean visible;
     private ProfileStatus status;
     private ProfileRole role;
     private LocalDateTime createdDate;

@@ -18,7 +18,7 @@ public class EmailHistoryEntity {
     private Integer id;
 
     @Column
-    private String to_email;
+    private String email;
 
     @Column
     private String title;
