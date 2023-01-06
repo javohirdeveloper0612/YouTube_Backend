@@ -1,0 +1,21 @@
+### CREATE LIKE TO VIDEO (USER)
+POST localhost:7070/video/like/create
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE2NzE4ODUxNDQsInVzZXJuYW1lIjoibmF6YXJvdmF6aW1qb244ODhAZ21haWwuY29tIiwicm9sZSI6IlJPTEVfVVNFUiIsImV4cCI6MTY3MTk3MTU0NCwiaXNzIjoia3VudXogdGVzdCBwb3J0YWxpIn0.jfBaGv3zhIoTRZKR-4P3atBygbp0U68dbMLVwBOGU1atq2SNEd3opHoh_Fe4WG3AlMCMHFnLyTbLfFvDMjCoLA
+Content-Type: application/json
+
+{
+  "videoId": "cb6466b0-c697-447b-bd24-fe4d13d5e7b2",
+  "likeType": "LIKE"
+}
+
+### DELETE LIKE (USER)
+DELETE localhost:7070/video/like/delete/1
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE2NzE4ODUxNDQsInVzZXJuYW1lIjoibmF6YXJvdmF6aW1qb244ODhAZ21haWwuY29tIiwicm9sZSI6IlJPTEVfVVNFUiIsImV4cCI6MTY3MTk3MTU0NCwiaXNzIjoia3VudXogdGVzdCBwb3J0YWxpIn0.jfBaGv3zhIoTRZKR-4P3atBygbp0U68dbMLVwBOGU1atq2SNEd3opHoh_Fe4WG3AlMCMHFnLyTbLfFvDMjCoLA
+
+### GET VIDEOS  (OWNER)
+GET localhost:7070/video/like/my/liked
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE2NzE4ODUxNDQsInVzZXJuYW1lIjoibmF6YXJvdmF6aW1qb244ODhAZ21haWwuY29tIiwicm9sZSI6IlJPTEVfVVNFUiIsImV4cCI6MTY3MTk3MTU0NCwiaXNzIjoia3VudXogdGVzdCBwb3J0YWxpIn0.jfBaGv3zhIoTRZKR-4P3atBygbp0U68dbMLVwBOGU1atq2SNEd3opHoh_Fe4WG3AlMCMHFnLyTbLfFvDMjCoLA
+
+### GET USER LIKED VIDEOS (ADMIN)
+GET http://localhost:7070/video/like/user/liked/1
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE2NzE4OTMwMzgsInVzZXJuYW1lIjoiYWRtaW5jZWVrQGdtYWlsLmNvbSIsInJvbGUiOiJST0xFX0FETUlOIiwiZXhwIjoxNjcxOTc5NDM4LCJpc3MiOiJrdW51eiB0ZXN0IHBvcnRhbGkifQ.Ls2dqg8dIDGGVOT5rzLRd_SSCS8KGGWFzbDlTOPXe8BhDKA9T6nt664HLWz4vI7Pm_BENnowYGavlf-zCqFmHA

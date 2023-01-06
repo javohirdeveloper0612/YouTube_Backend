@@ -1,0 +1,52 @@
+### CREATE PLAYLIST (USER)
+POST localhost:7070/playlist/create
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE2NzIwNTU0MDAsInVzZXJuYW1lIjoibmF6YXJvdmF6aW1qb244ODhAZ21haWwuY29tIiwicm9sZSI6IlJPTEVfVVNFUiIsImV4cCI6MTY3MjE0MTgwMCwiaXNzIjoia3VudXogdGVzdCBwb3J0YWxpIn0.YosHrmAHeWwCBLdWXWgEVGnOO04N9cnV5RmVgkkjdw_g-pYnrhYwR63VqZVyyj1tYNBZGYwAQ_pY6EuhYY6MhA
+Content-Type: application/json
+
+{
+  "channelId": "3429f886-e026-4eb3-8848-2f2d18f72a51",
+  "name": "Favorites",
+  "description": "All my favorite videos in here",
+  "status": "PRIVATE"
+}
+
+### UPDATE PLAYLIST (OWNER)
+PUT localhost:7070/playlist/update/1
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE2NzE4MzIxNzIsInVzZXJuYW1lIjoibmF6YXJvdmF6aW1qb244ODhAZ21haWwuY29tIiwicm9sZSI6IlJPTEVfVVNFUiIsImV4cCI6MTY3MTkxODU3MiwiaXNzIjoia3VudXogdGVzdCBwb3J0YWxpIn0.x7R9egK8UtXFBHHiTkHb-2-1MqAQMDbhpnbE-i3eHO6wtqIdRmT8R66o-65sp983ivA_zT0iFFecUqD5Z1vJzA
+Content-Type: application/json
+
+{
+  "name": "Sevimlilar",
+  "description": "Mening hamma yoqtirgan videolarim shu yerda"
+}
+
+### UPDATE STATUS (OWNER)
+### PRIVATE && PUBLIC
+PUT localhost:7070/playlist/update/status/1
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE2NzE4MzIxNzIsInVzZXJuYW1lIjoibmF6YXJvdmF6aW1qb244ODhAZ21haWwuY29tIiwicm9sZSI6IlJPTEVfVVNFUiIsImV4cCI6MTY3MTkxODU3MiwiaXNzIjoia3VudXogdGVzdCBwb3J0YWxpIn0.x7R9egK8UtXFBHHiTkHb-2-1MqAQMDbhpnbE-i3eHO6wtqIdRmT8R66o-65sp983ivA_zT0iFFecUqD5Z1vJzA
+
+### DELETE PLAYLIST (OWNER OR ADMIN)
+DELETE localhost:7070/playlist/delete/1
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE2NzE4MzIxNzIsInVzZXJuYW1lIjoibmF6YXJvdmF6aW1qb244ODhAZ21haWwuY29tIiwicm9sZSI6IlJPTEVfVVNFUiIsImV4cCI6MTY3MTkxODU3MiwiaXNzIjoia3VudXogdGVzdCBwb3J0YWxpIn0.x7R9egK8UtXFBHHiTkHb-2-1MqAQMDbhpnbE-i3eHO6wtqIdRmT8R66o-65sp983ivA_zT0iFFecUqD5Z1vJzA
+
+### TODO MUST BE TESTED
+### GET All PLAYLIST Pagination (ADMIN)
+GET localhost:7070/playlist/get?page=1&size=1
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE2NzIwNTYxNjIsInVzZXJuYW1lIjoiYWRtaW5jZWVrQGdtYWlsLmNvbSIsInJvbGUiOiJST0xFX0FETUlOIiwiZXhwIjoxNjcyMTQyNTYyLCJpc3MiOiJrdW51eiB0ZXN0IHBvcnRhbGkifQ.2uT6t_FYf3zHp65CzjCZdAuLOv8Wr1JXCJBR8ZDrPLIb3HKjC3BgteIfA5TWZN0SZmIJDiu00CJFtPDz7vZCyQ
+
+### GET All PLAYLIST BY USER ID (ADMIN)
+GET localhost:7070/playlist/by/user/1
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE2NzIwNTYxNjIsInVzZXJuYW1lIjoiYWRtaW5jZWVrQGdtYWlsLmNvbSIsInJvbGUiOiJST0xFX0FETUlOIiwiZXhwIjoxNjcyMTQyNTYyLCJpc3MiOiJrdW51eiB0ZXN0IHBvcnRhbGkifQ.2uT6t_FYf3zHp65CzjCZdAuLOv8Wr1JXCJBR8ZDrPLIb3HKjC3BgteIfA5TWZN0SZmIJDiu00CJFtPDz7vZCyQ
+
+### GET All OWNER PLAYLISTS SHORT INFO (OWNER)
+GET localhost:7070/playlist/my/playlist
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE2NzIwNTU0MDAsInVzZXJuYW1lIjoibmF6YXJvdmF6aW1qb244ODhAZ21haWwuY29tIiwicm9sZSI6IlJPTEVfVVNFUiIsImV4cCI6MTY3MjE0MTgwMCwiaXNzIjoia3VudXogdGVzdCBwb3J0YWxpIn0.YosHrmAHeWwCBLdWXWgEVGnOO04N9cnV5RmVgkkjdw_g-pYnrhYwR63VqZVyyj1tYNBZGYwAQ_pY6EuhYY6MhA
+
+### GET All PLAYLIST BY CHANNEL ID (ALL)
+GET localhost:7070/playlist/get/by/channel/3429f886-e026-4eb3-8848-2f2d18f72a51
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE2NzIwNTU0MDAsInVzZXJuYW1lIjoibmF6YXJvdmF6aW1qb244ODhAZ21haWwuY29tIiwicm9sZSI6IlJPTEVfVVNFUiIsImV4cCI6MTY3MjE0MTgwMCwiaXNzIjoia3VudXogdGVzdCBwb3J0YWxpIn0.YosHrmAHeWwCBLdWXWgEVGnOO04N9cnV5RmVgkkjdw_g-pYnrhYwR63VqZVyyj1tYNBZGYwAQ_pY6EuhYY6MhA
+
+### GET All PLAYLIST BY ID (ADMIN)
+GET localhost:7070/playlist/get/1
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE2NzIwNTU0MDAsInVzZXJuYW1lIjoibmF6YXJvdmF6aW1qb244ODhAZ21haWwuY29tIiwicm9sZSI6IlJPTEVfVVNFUiIsImV4cCI6MTY3MjE0MTgwMCwiaXNzIjoia3VudXogdGVzdCBwb3J0YWxpIn0.YosHrmAHeWwCBLdWXWgEVGnOO04N9cnV5RmVgkkjdw_g-pYnrhYwR63VqZVyyj1tYNBZGYwAQ_pY6EuhYY6MhA
+

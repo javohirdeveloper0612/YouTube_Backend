@@ -1,0 +1,52 @@
+### create
+POST localhost:7070/video/create
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE2NzE4NDM4NzQsInVzZXJuYW1lIjoibmF6YXJvdmF6aW1qb244ODhAZ21haWwuY29tIiwicm9sZSI6IlJPTEVfVVNFUiIsImV4cCI6MTY3MTkzMDI3NCwiaXNzIjoia3VudXogdGVzdCBwb3J0YWxpIn0.cjppwbHGmvSW-YneWh7NXG0phFkhUX94HszEqq_qyHGgicIOxHmqxsiJv1cPTc6Hl6AiKjnSxgsvZPMtMHzU2A
+Content-Type: application/json
+
+{
+  "title": "Test video",
+  "description": "Bu mening videoyim layk bosib kamment qoldiring",
+  "previewAttachId": "1801cd8d-6cb7-438d-bd1e-9c0bc8fb5a92",
+  "attachId": "9a6de6de-c1b0-41b3-bcb0-6651c008cfe7",
+  "categoryId": 1,
+  "channelId": "5a6c1a89-e71f-4f6a-a906-9e770649dd3b",
+  "type": "SHORT",
+  "duration": "2"
+}
+
+### update
+PUT localhost:7070/video/update
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE2NzE4MjEzMTksInVzZXJuYW1lIjoibmF6YXJvdmF6aW1qb244ODhAZ21haWwuY29tIiwicm9sZSI6IlJPTEVfVVNFUiIsImV4cCI6MTY3MTkwNzcxOSwiaXNzIjoia3VudXogdGVzdCBwb3J0YWxpIn0.TGt2QNi7E1crYdpX2VYj5tHH7CtplBP44PNkjSbJch7QDRRi4SBbP0yHhWI3DWmUk3UVjySBb-b2v6eOnxN-Rg
+Content-Type: application/json
+
+{
+  "id": "4ccbdd1a-78ef-46a1-8d7d-e63fa142bc17",
+  "title": "Test video 2222",
+  "description": "kamment qoldiring",
+  "previewAttachId": "42252b14-38cc-4e23-8233-3d69992c2956",
+  "categoryId": 1
+}
+
+
+### change status
+PUT localhost:7070/video/change/4ccbdd1a-78ef-46a1-8d7d-e63fa142bc17
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE2NzE4MjEzMTksInVzZXJuYW1lIjoibmF6YXJvdmF6aW1qb244ODhAZ21haWwuY29tIiwicm9sZSI6IlJPTEVfVVNFUiIsImV4cCI6MTY3MTkwNzcxOSwiaXNzIjoia3VudXogdGVzdCBwb3J0YWxpIn0.TGt2QNi7E1crYdpX2VYj5tHH7CtplBP44PNkjSbJch7QDRRi4SBbP0yHhWI3DWmUk3UVjySBb-b2v6eOnxN-Rg
+
+
+### increase view count
+PUT localhost:7070/video/view_count/4ccbdd1a-78ef-46a1-8d7d-e63fa142bc17
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE2NzE4MjEzMTksInVzZXJuYW1lIjoibmF6YXJvdmF6aW1qb244ODhAZ21haWwuY29tIiwicm9sZSI6IlJPTEVfVVNFUiIsImV4cCI6MTY3MTkwNzcxOSwiaXNzIjoia3VudXogdGVzdCBwb3J0YWxpIn0.TGt2QNi7E1crYdpX2VYj5tHH7CtplBP44PNkjSbJch7QDRRi4SBbP0yHhWI3DWmUk3UVjySBb-b2v6eOnxN-Rg
+
+
+### get by category id
+GET localhost:7070/video/get_by_category/1
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE2NzE4MjEzMTksInVzZXJuYW1lIjoibmF6YXJvdmF6aW1qb244ODhAZ21haWwuY29tIiwicm9sZSI6IlJPTEVfVVNFUiIsImV4cCI6MTY3MTkwNzcxOSwiaXNzIjoia3VudXogdGVzdCBwb3J0YWxpIn0.TGt2QNi7E1crYdpX2VYj5tHH7CtplBP44PNkjSbJch7QDRRi4SBbP0yHhWI3DWmUk3UVjySBb-b2v6eOnxN-Rg
+
+### search by title
+GET localhost:7070/video/search_by_title/Test video 2222
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE2NzE4MjEzMTksInVzZXJuYW1lIjoibmF6YXJvdmF6aW1qb244ODhAZ21haWwuY29tIiwicm9sZSI6IlJPTEVfVVNFUiIsImV4cCI6MTY3MTkwNzcxOSwiaXNzIjoia3VudXogdGVzdCBwb3J0YWxpIn0.TGt2QNi7E1crYdpX2VYj5tHH7CtplBP44PNkjSbJch7QDRRi4SBbP0yHhWI3DWmUk3UVjySBb-b2v6eOnxN-Rg
+
+### get by tag id
+GET localhost:7070/video/get_by_tag_id/1
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE2NzE4MjEzMTksInVzZXJuYW1lIjoibmF6YXJvdmF6aW1qb244ODhAZ21haWwuY29tIiwicm9sZSI6IlJPTEVfVVNFUiIsImV4cCI6MTY3MTkwNzcxOSwiaXNzIjoia3VudXogdGVzdCBwb3J0YWxpIn0.TGt2QNi7E1crYdpX2VYj5tHH7CtplBP44PNkjSbJch7QDRRi4SBbP0yHhWI3DWmUk3UVjySBb-b2v6eOnxN-Rg
+

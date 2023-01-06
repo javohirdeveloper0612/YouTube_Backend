@@ -1,0 +1,58 @@
+POST localhost:7070/video/create
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE2NzIwNTU0MDAsInVzZXJuYW1lIjoibmF6YXJvdmF6aW1qb244ODhAZ21haWwuY29tIiwicm9sZSI6IlJPTEVfVVNFUiIsImV4cCI6MTY3MjE0MTgwMCwiaXNzIjoia3VudXogdGVzdCBwb3J0YWxpIn0.YosHrmAHeWwCBLdWXWgEVGnOO04N9cnV5RmVgkkjdw_g-pYnrhYwR63VqZVyyj1tYNBZGYwAQ_pY6EuhYY6MhA
+Content-Type: application/json
+
+{
+  "title": "Test video",
+  "description": "Bu mening videoyim layk bosib kamment qoldiring",
+  "previewAttachId": "1801cd8d-6cb7-438d-bd1e-9c0bc8fb5a92",
+  "attachId": "9a6de6de-c1b0-41b3-bcb0-6651c008cfe7",
+  "categoryId": 1,
+  "channelId": "5a6c1a89-e71f-4f6a-a906-9e770649dd3b",
+  "type": "SHORT",
+  "duration": "2"
+}
+
+### CREATE COMMENT (USER)
+POST localhost:7070/comment/create
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE2NzIwNTU0MDAsInVzZXJuYW1lIjoibmF6YXJvdmF6aW1qb244ODhAZ21haWwuY29tIiwicm9sZSI6IlJPTEVfVVNFUiIsImV4cCI6MTY3MjE0MTgwMCwiaXNzIjoia3VudXogdGVzdCBwb3J0YWxpIn0.YosHrmAHeWwCBLdWXWgEVGnOO04N9cnV5RmVgkkjdw_g-pYnrhYwR63VqZVyyj1tYNBZGYwAQ_pY6EuhYY6MhA
+Content-Type: application/json
+
+{
+  "videoId": "09e4a453-5ba0-46ef-a211-54d821af7b70",
+  "content": "Video yaxshi chiqmabdi dabdalaaa !"
+}
+
+### UPDATE COMMENT BY ID (OWNER)
+PUT localhost:7070/comment/update/1
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE2NzIwNTU0MDAsInVzZXJuYW1lIjoibmF6YXJvdmF6aW1qb244ODhAZ21haWwuY29tIiwicm9sZSI6IlJPTEVfVVNFUiIsImV4cCI6MTY3MjE0MTgwMCwiaXNzIjoia3VudXogdGVzdCBwb3J0YWxpIn0.YosHrmAHeWwCBLdWXWgEVGnOO04N9cnV5RmVgkkjdw_g-pYnrhYwR63VqZVyyj1tYNBZGYwAQ_pY6EuhYY6MhA
+Content-Type: application/json
+
+{
+  "videoId": "09e4a453-5ba0-46ef-a211-54d821af7b70",
+  "content": "Oka video udar addushi ijodizga qurtim !"
+}
+
+### DELETE COMMENT (OWNER, ADMIN)
+DELETE localhost:7070/comment/delete/2
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE2NzIwNzUyMTQsInVzZXJuYW1lIjoiYWRtaW5jZWVrQGdtYWlsLmNvbSIsInJvbGUiOiJST0xFX0FETUlOIiwiZXhwIjoxNjcyMTYxNjE0LCJpc3MiOiJrdW51eiB0ZXN0IHBvcnRhbGkifQ.H3Tdn2w3rRXpQe2LPT1yK6eVyVPWdLz9V9FC52pMir_gh8Vc4UyZlsQDiy1V1QumHjHKNTo8GkvkO-A4UL7VYg
+
+### GET ALL COMMENTS PAGINATION (ADMIN)
+GET localhost:7070/comment/get?page=1&size=1
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE2NzIwNzUyMTQsInVzZXJuYW1lIjoiYWRtaW5jZWVrQGdtYWlsLmNvbSIsInJvbGUiOiJST0xFX0FETUlOIiwiZXhwIjoxNjcyMTYxNjE0LCJpc3MiOiJrdW51eiB0ZXN0IHBvcnRhbGkifQ.H3Tdn2w3rRXpQe2LPT1yK6eVyVPWdLz9V9FC52pMir_gh8Vc4UyZlsQDiy1V1QumHjHKNTo8GkvkO-A4UL7VYg
+
+### GET ALL COMMENTS BY USER ID (ADMIN)
+GET localhost:7070/comment/get/user/1
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE2NzIwNzUyMTQsInVzZXJuYW1lIjoiYWRtaW5jZWVrQGdtYWlsLmNvbSIsInJvbGUiOiJST0xFX0FETUlOIiwiZXhwIjoxNjcyMTYxNjE0LCJpc3MiOiJrdW51eiB0ZXN0IHBvcnRhbGkifQ.H3Tdn2w3rRXpQe2LPT1yK6eVyVPWdLz9V9FC52pMir_gh8Vc4UyZlsQDiy1V1QumHjHKNTo8GkvkO-A4UL7VYg
+
+### GET OWNER COMMENTS (OWNER)
+GET localhost:7070/comment/my/comments/
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE2NzIwNTU0MDAsInVzZXJuYW1lIjoibmF6YXJvdmF6aW1qb244ODhAZ21haWwuY29tIiwicm9sZSI6IlJPTEVfVVNFUiIsImV4cCI6MTY3MjE0MTgwMCwiaXNzIjoia3VudXogdGVzdCBwb3J0YWxpIn0.YosHrmAHeWwCBLdWXWgEVGnOO04N9cnV5RmVgkkjdw_g-pYnrhYwR63VqZVyyj1tYNBZGYwAQ_pY6EuhYY6MhA
+
+### GET COMMENT BY VIDEO ID (OWNER)
+GET localhost:7070/comment/by/video/09e4a453-5ba0-46ef-a211-54d821af7b70
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE2NzIwNTU0MDAsInVzZXJuYW1lIjoibmF6YXJvdmF6aW1qb244ODhAZ21haWwuY29tIiwicm9sZSI6IlJPTEVfVVNFUiIsImV4cCI6MTY3MjE0MTgwMCwiaXNzIjoia3VudXogdGVzdCBwb3J0YWxpIn0.YosHrmAHeWwCBLdWXWgEVGnOO04N9cnV5RmVgkkjdw_g-pYnrhYwR63VqZVyyj1tYNBZGYwAQ_pY6EuhYY6MhA
+
+### GET COMMENT REPLIES (OWNER)
+GET localhost:7070/comment/replies/by/comment/4
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE2NzIwNTU0MDAsInVzZXJuYW1lIjoibmF6YXJvdmF6aW1qb244ODhAZ21haWwuY29tIiwicm9sZSI6IlJPTEVfVVNFUiIsImV4cCI6MTY3MjE0MTgwMCwiaXNzIjoia3VudXogdGVzdCBwb3J0YWxpIn0.YosHrmAHeWwCBLdWXWgEVGnOO04N9cnV5RmVgkkjdw_g-pYnrhYwR63VqZVyyj1tYNBZGYwAQ_pY6EuhYY6MhA

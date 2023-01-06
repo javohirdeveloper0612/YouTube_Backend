@@ -1,0 +1,24 @@
+### add
+POST localhost:7070/video_tag/add
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE2NzE4MjEzMTksInVzZXJuYW1lIjoibmF6YXJvdmF6aW1qb244ODhAZ21haWwuY29tIiwicm9sZSI6IlJPTEVfVVNFUiIsImV4cCI6MTY3MTkwNzcxOSwiaXNzIjoia3VudXogdGVzdCBwb3J0YWxpIn0.TGt2QNi7E1crYdpX2VYj5tHH7CtplBP44PNkjSbJch7QDRRi4SBbP0yHhWI3DWmUk3UVjySBb-b2v6eOnxN-Rg
+Content-Type: application/json
+
+{
+  "tagId": "1",
+  "videoId": "4ccbdd1a-78ef-46a1-8d7d-e63fa142bc17"
+}
+
+
+### delete
+DELETE localhost:7070/video_tag/delete
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE2NzE4MjEzMTksInVzZXJuYW1lIjoibmF6YXJvdmF6aW1qb244ODhAZ21haWwuY29tIiwicm9sZSI6IlJPTEVfVVNFUiIsImV4cCI6MTY3MTkwNzcxOSwiaXNzIjoia3VudXogdGVzdCBwb3J0YWxpIn0.TGt2QNi7E1crYdpX2VYj5tHH7CtplBP44PNkjSbJch7QDRRi4SBbP0yHhWI3DWmUk3UVjySBb-b2v6eOnxN-Rg
+Content-Type: application/json
+
+{
+  "tagId": "1",
+  "videoId": "4ccbdd1a-78ef-46a1-8d7d-e63fa142bc17"
+}
+
+### get
+GET localhost:7070/video_tag/get_by_video_id/4ccbdd1a-78ef-46a1-8d7d-e63fa142bc17
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE2NzE4MjEzMTksInVzZXJuYW1lIjoibmF6YXJvdmF6aW1qb244ODhAZ21haWwuY29tIiwicm9sZSI6IlJPTEVfVVNFUiIsImV4cCI6MTY3MTkwNzcxOSwiaXNzIjoia3VudXogdGVzdCBwb3J0YWxpIn0.TGt2QNi7E1crYdpX2VYj5tHH7CtplBP44PNkjSbJch7QDRRi4SBbP0yHhWI3DWmUk3UVjySBb-b2v6eOnxN-Rg

@@ -1,0 +1,34 @@
+### profile update password
+PUT localhost:7070/profile/update_password/22224444
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE2NzE3MTE3MDYsInVzZXJuYW1lIjoibmF6YXJvdmF6aW1qb24zQGdtYWlsLmNvbSIsInJvbGUiOiJST0xFX1VTRVIiLCJleHAiOjE2NzE3OTgxMDYsImlzcyI6Imt1bnV6IHRlc3QgcG9ydGFsaSJ9.w0g67DVMdHaprL_hP4-6d8zjrmRhfcA628CMYJgl0kjW4Ps98rqUq3zQSVLH5LXJkp2XusTyVMClUyrhfZwDRQ
+
+### profile update detail
+PUT localhost:7070/profile/update_detail
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE2NzI5ODIxOTYsInVzZXJuYW1lIjoiamF2b2hpcnlhbGxheWV2MUBnbWFpbC5jb20iLCJyb2xlIjoiUk9MRV9VU0VSIiwiZXhwIjoxNjczMDY4NTk2LCJpc3MiOiJrdW51eiB0ZXN0IHBvcnRhbGkifQ.oWNvZMP6CQkvJ-3G7e-c9wy-E8XrPgFK8QzQVFx8y4hDnOP26h5k6gXONuTU-4154XPhOXJOGxzNw42Hfs2jAQ
+Content-Type: application/json
+
+{
+  "name": "A",
+  "surname": "N"
+}
+
+### profile update email
+PUT localhost:7070/profile/update_email/nazarovazimjon888@gmail.com
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE2NzE3MTE3MDYsInVzZXJuYW1lIjoibmF6YXJvdmF6aW1qb24zQGdtYWlsLmNvbSIsInJvbGUiOiJST0xFX1VTRVIiLCJleHAiOjE2NzE3OTgxMDYsImlzcyI6Imt1bnV6IHRlc3QgcG9ydGFsaSJ9.w0g67DVMdHaprL_hP4-6d8zjrmRhfcA628CMYJgl0kjW4Ps98rqUq3zQSVLH5LXJkp2XusTyVMClUyrhfZwDRQ
+
+### profile update photo
+PUT localhost:7070/profile/update_photo
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE2NzE3MTIyNjYsInVzZXJuYW1lIjoibmF6YXJvdmF6aW1qb244ODhAZ21haWwuY29tIiwicm9sZSI6IlJPTEVfVVNFUiIsImV4cCI6MTY3MTc5ODY2NiwiaXNzIjoia3VudXogdGVzdCBwb3J0YWxpIn0.xWMuACTQ6TjsgwzeHq3P5q2eKz1UZwWyVmgU12cwfGwKiDigxO_3WkbdhVoGgZf4WYCY96sbse6hW8h9W-HXBA
+Content-Type: multipart/form-data; boundary=WebAppBoundary
+
+--WebAppBoundary
+Content-Disposition: form-data; name="file"; filename="frame.PNG"
+
+< E:\frame.png
+
+
+### get detial
+GET localhost:7070/profile/get_detail
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE2NzE3MTIyNjYsInVzZXJuYW1lIjoibmF6YXJvdmF6aW1qb244ODhAZ21haWwuY29tIiwicm9sZSI6IlJPTEVfVVNFUiIsImV4cCI6MTY3MTc5ODY2NiwiaXNzIjoia3VudXogdGVzdCBwb3J0YWxpIn0.xWMuACTQ6TjsgwzeHq3P5q2eKz1UZwWyVmgU12cwfGwKiDigxO_3WkbdhVoGgZf4WYCY96sbse6hW8h9W-HXBA
+
+

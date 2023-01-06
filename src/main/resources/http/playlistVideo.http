@@ -1,0 +1,35 @@
+### CREATE VIDEO TO PLAYLIST (USER, PLAYLIST OWNER)
+POST localhost:7070/playlist/video/create
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE2NzIyODAzNTcsInVzZXJuYW1lIjoibmF6YXJvdmF6aW1qb244ODhAZ21haWwuY29tIiwicm9sZSI6IlJPTEVfVVNFUiIsImV4cCI6MTY3MjM2Njc1NywiaXNzIjoia3VudXogdGVzdCBwb3J0YWxpIn0.Kcu-c7Cf9HzM5cVWzMb-Gho4NIX8O8is9X_4uUyvnhWzDWYqaLnEFFWCSQ028gXx6di-mI4AqvBRkfqt1cWz_Q
+Content-Type: application/json
+
+{
+  "playlistId": 1,
+  "videoId": "ac536f56-bbb2-44bd-a0d7-81bbae74910a",
+  "orderNum": 1
+}
+
+### UPDATE VIDEO IN PLAYLIST (USER, OWNER)
+PUT localhost:7070/playlist/video/update
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE2NzIyODAzNTcsInVzZXJuYW1lIjoibmF6YXJvdmF6aW1qb244ODhAZ21haWwuY29tIiwicm9sZSI6IlJPTEVfVVNFUiIsImV4cCI6MTY3MjM2Njc1NywiaXNzIjoia3VudXogdGVzdCBwb3J0YWxpIn0.Kcu-c7Cf9HzM5cVWzMb-Gho4NIX8O8is9X_4uUyvnhWzDWYqaLnEFFWCSQ028gXx6di-mI4AqvBRkfqt1cWz_Q
+Content-Type: application/json
+
+{
+  "playlistId": 1,
+  "videoId": "ac536f56-bbb2-44bd-a0d7-81bbae74910a",
+  "orderNum": 1
+}
+
+### DELETE VIDEO IN PLAYLIST (USER, OWNER)
+DELETE localhost:7070/playlist/video/delete
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE2NzIyODAzNTcsInVzZXJuYW1lIjoibmF6YXJvdmF6aW1qb244ODhAZ21haWwuY29tIiwicm9sZSI6IlJPTEVfVVNFUiIsImV4cCI6MTY3MjM2Njc1NywiaXNzIjoia3VudXogdGVzdCBwb3J0YWxpIn0.Kcu-c7Cf9HzM5cVWzMb-Gho4NIX8O8is9X_4uUyvnhWzDWYqaLnEFFWCSQ028gXx6di-mI4AqvBRkfqt1cWz_Q
+Content-Type: application/json
+
+{
+  "playlistId": 1,
+  "videoId": "ac536f56-bbb2-44bd-a0d7-81bbae74910a"
+}
+
+### GET VIDEOS IN PLAYLIST {with playlist id} (USER, OWNER)
+GET localhost:7070/playlist/video/get/1
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE2NzIyODAzNTcsInVzZXJuYW1lIjoibmF6YXJvdmF6aW1qb244ODhAZ21haWwuY29tIiwicm9sZSI6IlJPTEVfVVNFUiIsImV4cCI6MTY3MjM2Njc1NywiaXNzIjoia3VudXogdGVzdCBwb3J0YWxpIn0.Kcu-c7Cf9HzM5cVWzMb-Gho4NIX8O8is9X_4uUyvnhWzDWYqaLnEFFWCSQ028gXx6di-mI4AqvBRkfqt1cWz_Q
