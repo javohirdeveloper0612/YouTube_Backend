@@ -62,6 +62,7 @@ public class SecurityConfig {
                 .requestMatchers("/attach/public/**").permitAll()
                 .requestMatchers("/channel/get/**").permitAll()
                 .requestMatchers("/playlist/get/by/channel/**").permitAll()
+                .requestMatchers( "/swagger-ui/index.html").permitAll()
                 .requestMatchers(AUTH_WHITELIST).permitAll()
                 .anyRequest().authenticated()
                 .and().addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class);

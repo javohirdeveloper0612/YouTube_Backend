@@ -5,7 +5,7 @@ Content-Type: application/json
 {
   "name": "Adminjon",
   "surname": "admin",
-  "email": "javohiryallayev1@gmail.com",
+  "email": "mydream7usa@gmail.com",
   "password": "1234"
 }
 
@@ -14,7 +14,7 @@ POST localhost:7070/auth/authorization
 Content-Type: application/json
 
 {
-  "email": "javohiryallayev1@gmail.com",
+  "email": "mydream7usa@gmail.com",
   "password": "1234"
 }
 
