@@ -18,5 +18,14 @@ Content-Type: application/json
   "password": "2022"
 }
 
+### login admin
+POST localhost:8080/auth/login
+Content-Type: application/json
+
+{
+  "email": "mylaptop0612@gmail.com",
+  "password": "123"
+}
+
 ### init admin
 GET localhost:8080/init/admin

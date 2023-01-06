@@ -144,6 +144,8 @@ public class AuthService {
         if (entity.getStatus().equals(ProfileStatus.BLOCK)){
             throw new StatusBlockException(resourceBundleService.getMessage("profile.status.block",language));
         }
+
+
         LoginResponseDTO responseDTO = new LoginResponseDTO();
         responseDTO.setName(entity.getName());
         responseDTO.setSurname(entity.getSurname());

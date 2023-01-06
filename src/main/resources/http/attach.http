@@ -1,11 +1,18 @@
 ### Upload file
 POST http://localhost:8080/attach/public/upload
-Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE2NzMwMTgxNzMsInVzZXJuYW1lIjoibXlkcmVhbTd1c2FAZ21haWwuY29tIiwicm9sZSI6IlJPTEVfVVNFUiIsImV4cCI6MTY3MzEwNDU3MywiaXNzIjoia3VudXogdGVzdCBwb3J0YWxpIn0.Dw5DvcZe-LDe1QBn-cWoUPncFWVIsto6G0s5tyUSYVUXqkJ_A1e6V5bdh_CyLnHWCY1L4MzVdTG1ucIqj09urQ
 Content-Type: multipart/form-data; boundary=WebAppBoundary
-
 
 --WebAppBoundary
 Content-Disposition: form-data; name="file"; filename="video.mp4"
 
-#< E:\kaptar.mp4
-< home:/javaDev/video.mp4
+/home:/javaDev/video.mp4
+
+### open
+GET http://localhost:8080/attach/public/download/84ea3584-9b78-4388-a31f-f500ce1a6309.mp4
+
+### download
+GET localhost:8080/attach/download/fb1e4d7e-9639-4b89-9e83-0fcd617f5bd4
+
+### Delete
+DELETE localhost:8080/attach/delete/84ea3584-9b78-4388-a31f-f500ce1a6309.mp4
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE2NzMwMjM1MDksInVzZXJuYW1lIjoibXlsYXB0b3AwNjEyQGdtYWlsLmNvbSIsInJvbGUiOiJST0xFX0FETUlOIiwiZXhwIjoxNjczMTA5OTA5LCJpc3MiOiJrdW51eiB0ZXN0IHBvcnRhbGkifQ.DQvx350N4W4V6QYK6l_U8oYP74xa25mdqJqE5Lc5MfwhB9GO5f2aAJ_YdDY_X-D0znanBJ_adZoBrb-YhYOzTQ

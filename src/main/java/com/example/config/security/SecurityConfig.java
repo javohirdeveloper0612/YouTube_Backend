@@ -53,6 +53,7 @@ public class SecurityConfig {
         http.csrf().disable().cors().disable();
         http.authorizeHttpRequests()
                 .requestMatchers("/auth/**").permitAll()
+                .requestMatchers("/attach/public/**").permitAll()
                 .anyRequest().authenticated()
                 .and().addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class);
 
