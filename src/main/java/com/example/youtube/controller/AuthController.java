@@ -26,6 +26,8 @@ public class AuthController {
         this.service = service;
     }
 
+    //loglar yozilishi kerak
+
 
     @Operation(summary = "Method for registration", description = "This method used to create a user")
     @PostMapping("/registration")
