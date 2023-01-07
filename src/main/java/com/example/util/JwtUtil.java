@@ -23,7 +23,7 @@ public class JwtUtil {
         jwtBuilder.claim("role", role);
 
         jwtBuilder.setExpiration(new Date(System.currentTimeMillis() + (tokenLiveTime)));
-        jwtBuilder.setIssuer("kunuz test portali");
+        jwtBuilder.setIssuer("YouTube test portali");
         return jwtBuilder.compact();
     }
 

@@ -4,6 +4,8 @@ import com.example.exp.EmailAlreadyExistsException;
 import com.example.exp.LimitOutPutException;
 import com.example.exp.LoginOrPasswordWrongException;
 import com.example.exp.StatusBlockException;
+import com.example.exp.profile.FileTypeIncorrectException;
+import com.example.exp.profile.ProfileNotFoundException;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.HttpStatusCode;
@@ -58,10 +60,21 @@ public class ExceptionHandlerController extends ResponseEntityExceptionHandler {
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
     }
 
+    @ExceptionHandler({ProfileNotFoundException.class})
+    private ResponseEntity<?> handler(ProfileNotFoundException e) {
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
+    }
+
+    @ExceptionHandler({FileTypeIncorrectException.class})
+    private ResponseEntity<?> handler(FileTypeIncorrectException e) {
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
+    }
+
  /*   @ExceptionHandler({CouldNotRead.class})
     private ResponseEntity<?> handler(CouldNotRead e) {
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
     }
+
 
     @ExceptionHandler({FileNotFoundException.class})
     private ResponseEntity<?> handler(FileNotFoundException e) {
@@ -83,10 +96,7 @@ public class ExceptionHandlerController extends ResponseEntityExceptionHandler {
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
     }
 
-    @ExceptionHandler({ProfileNotFoundException.class})
-    private ResponseEntity<?> handler(ProfileNotFoundException e) {
-        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
-    }
+
 
     @ExceptionHandler({ChannelNotExistsException.class})
     private ResponseEntity<?> handler(ChannelNotExistsException e) {

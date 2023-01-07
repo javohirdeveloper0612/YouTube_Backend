@@ -119,7 +119,7 @@ public class AuthService {
 
     public ProfileResponseDTO getDTO(ProfileEntity entity) {
 
-        ProfileResponseDTO profileDTO = new ProfileResponseDTO();
+        ProfileResponseDTO profileDTO = new ProfileResponseDTO(entity.getId(), entity.getName(), entity.getSurname(), entity.getStatus(), entity.getRole(), entity.getVisible(), entity.getCreatedDate());
         profileDTO.setId(entity.getId());
         profileDTO.setName(entity.getName());
         profileDTO.setSurname(entity.getSurname());

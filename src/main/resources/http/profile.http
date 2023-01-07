@@ -1,0 +1,44 @@
+### change password
+PUT localhost:8080/profile/changePassword/2022
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE2NzMwNjMzODMsInVzZXJuYW1lIjoibXlkcmVhbTd1c2FAZ21haWwuY29tIiwicm9sZSI6IlJPTEVfVVNFUiIsImV4cCI6MTY3MzE0OTc4MywiaXNzIjoia3VudXogdGVzdCBwb3J0YWxpIn0.yS40yyG2X-kh70Ydzx63UHf4cJ40KzcYT5SDL7kLUZcE5SGFV5vPURvTi6UZkUYUIfx32QSEfJnriX78cHfEJg
+
+
+### update Detail profile
+PUT localhost:8080/profile/update_detail
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE2NzMwNjMzODMsInVzZXJuYW1lIjoibXlkcmVhbTd1c2FAZ21haWwuY29tIiwicm9sZSI6IlJPTEVfVVNFUiIsImV4cCI6MTY3MzE0OTc4MywiaXNzIjoia3VudXogdGVzdCBwb3J0YWxpIn0.yS40yyG2X-kh70Ydzx63UHf4cJ40KzcYT5SDL7kLUZcE5SGFV5vPURvTi6UZkUYUIfx32QSEfJnriX78cHfEJg
+Content-Type: application/json
+
+{
+  "name": "Toshmat",
+  "surname": "Aliyev"
+}
+
+### update profile photo
+PUT localhost:8080/profile/update_photo
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE2NzMwNjMzODMsInVzZXJuYW1lIjoibXlkcmVhbTd1c2FAZ21haWwuY29tIiwicm9sZSI6IlJPTEVfVVNFUiIsImV4cCI6MTY3MzE0OTc4MywiaXNzIjoia3VudXogdGVzdCBwb3J0YWxpIn0.yS40yyG2X-kh70Ydzx63UHf4cJ40KzcYT5SDL7kLUZcE5SGFV5vPURvTi6UZkUYUIfx32QSEfJnriX78cHfEJg
+Content-Type: multipart/form-data; boundary=WebAppBoundary
+
+--WebAppBoundary
+Content-Disposition: form-data; name="file"; filename="image.png"
+
+/home/javaDev/image.png
+
+
+### profile get detail
+GET localhost:8080/profile/get_detail
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE2NzMwNjMzODMsInVzZXJuYW1lIjoibXlkcmVhbTd1c2FAZ21haWwuY29tIiwicm9sZSI6IlJPTEVfVVNFUiIsImV4cCI6MTY3MzE0OTc4MywiaXNzIjoia3VudXogdGVzdCBwb3J0YWxpIn0.yS40yyG2X-kh70Ydzx63UHf4cJ40KzcYT5SDL7kLUZcE5SGFV5vPURvTi6UZkUYUIfx32QSEfJnriX78cHfEJg
+
+### create
+POST localhost:8080/profile/create
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE2NzMwODY5NjQsInVzZXJuYW1lIjoibXlsYXB0b3AwNjEyQGdtYWlsLmNvbSIsInJvbGUiOiJST0xFX0FETUlOIiwiZXhwIjoxNjczMTczMzY0LCJpc3MiOiJZb3VUdWJlIHRlc3QgcG9ydGFsaSJ9.xPR99VuF8dhDeu4p1BloFFc7QTKI2LOFyojiaKvbyxbnzvI-mZKmi7Wm082Ijdyq-67na9vBoXj5pp635HU09Q
+Content-Type: application/json
+
+{
+  "name": "Toshmat",
+  "surname": "Aliyev",
+  "email": "firdavsprogramer@gmail.com",
+  "password": "2022"
+}
+
+
+
