@@ -18,6 +18,7 @@ import com.example.youtube.util.JwtUtil;
 import com.example.youtube.util.MD5;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -28,16 +29,19 @@ import java.util.Optional;
 @Service
 public class ProfileService {
 
-    @Autowired
-    private ProfileRepository repository;
-    @Autowired
-    private ResourceBundleService resourceBundleService;
-    @Autowired
-    private AttachService attachService;
-    @Autowired
-    private EmailHistoryService emailHistoryService;
-    @Autowired
-    private MailService mailService;
+    private final ProfileRepository repository;
+    private final ResourceBundleService resourceBundleService;
+    private final AttachService attachService;
+    private final EmailHistoryService emailHistoryService;
+    private final MailService mailService;
+@Lazy
+    public ProfileService(ProfileRepository repository, ResourceBundleService resourceBundleService, AttachService attachService, EmailHistoryService emailHistoryService, MailService mailService) {
+        this.repository = repository;
+        this.resourceBundleService = resourceBundleService;
+        this.attachService = attachService;
+        this.emailHistoryService = emailHistoryService;
+        this.mailService = mailService;
+    }
 
 
     public ProfileResponseDTO updatePassword(String password, Integer id, Language language) {
