@@ -1,0 +1,29 @@
+### create new category
+POST localhost:8080/category/add
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE2NzMwODY5NjQsInVzZXJuYW1lIjoibXlsYXB0b3AwNjEyQGdtYWlsLmNvbSIsInJvbGUiOiJST0xFX0FETUlOIiwiZXhwIjoxNjczMTczMzY0LCJpc3MiOiJZb3VUdWJlIHRlc3QgcG9ydGFsaSJ9.xPR99VuF8dhDeu4p1BloFFc7QTKI2LOFyojiaKvbyxbnzvI-mZKmi7Wm082Ijdyq-67na9vBoXj5pp635HU09Q
+Content-Type: application/json
+
+{
+  "name": "game"
+}
+
+### get category
+GET localhost:8080/category/get_all
+
+### get by id
+GET localhost:8080/category/get/1s
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE2NzMwODY5NjQsInVzZXJuYW1lIjoibXlsYXB0b3AwNjEyQGdtYWlsLmNvbSIsInJvbGUiOiJST0xFX0FETUlOIiwiZXhwIjoxNjczMTczMzY0LCJpc3MiOiJZb3VUdWJlIHRlc3QgcG9ydGFsaSJ9.xPR99VuF8dhDeu4p1BloFFc7QTKI2LOFyojiaKvbyxbnzvI-mZKmi7Wm082Ijdyq-67na9vBoXj5pp635HU09Q
+
+### delete category by id
+DELETE localhost:8080/category/delete/2
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE2NzMwODY5NjQsInVzZXJuYW1lIjoibXlsYXB0b3AwNjEyQGdtYWlsLmNvbSIsInJvbGUiOiJST0xFX0FETUlOIiwiZXhwIjoxNjczMTczMzY0LCJpc3MiOiJZb3VUdWJlIHRlc3QgcG9ydGFsaSJ9.xPR99VuF8dhDeu4p1BloFFc7QTKI2LOFyojiaKvbyxbnzvI-mZKmi7Wm082Ijdyq-67na9vBoXj5pp635HU09Q
+   
+
+### edt category
+PUT localhost:8080/category/edit/1
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE2NzMwODY5NjQsInVzZXJuYW1lIjoibXlsYXB0b3AwNjEyQGdtYWlsLmNvbSIsInJvbGUiOiJST0xFX0FETUlOIiwiZXhwIjoxNjczMTczMzY0LCJpc3MiOiJZb3VUdWJlIHRlc3QgcG9ydGFsaSJ9.xPR99VuF8dhDeu4p1BloFFc7QTKI2LOFyojiaKvbyxbnzvI-mZKmi7Wm082Ijdyq-67na9vBoXj5pp635HU09Q
+Content-Type: application/json
+
+{
+  "name": "games"
+}

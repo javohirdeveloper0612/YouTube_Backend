@@ -4,6 +4,10 @@ import com.example.exp.EmailAlreadyExistsException;
 import com.example.exp.LimitOutPutException;
 import com.example.exp.LoginOrPasswordWrongException;
 import com.example.exp.StatusBlockException;
+import com.example.exp.category.CategoryExistsException;
+import com.example.exp.category.CategoryNotFoundException;
+import com.example.exp.email.EmailNotFoundException;
+import com.example.exp.email.IncorrectDateFormatException;
 import com.example.exp.profile.FileTypeIncorrectException;
 import com.example.exp.profile.ProfileNotFoundException;
 import org.springframework.http.HttpHeaders;
@@ -69,6 +73,29 @@ public class ExceptionHandlerController extends ResponseEntityExceptionHandler {
     private ResponseEntity<?> handler(FileTypeIncorrectException e) {
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
     }
+
+    @ExceptionHandler({CategoryNotFoundException.class})
+    private ResponseEntity<?> handler(CategoryNotFoundException e) {
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
+    }
+
+
+    @ExceptionHandler({CategoryExistsException.class})
+    private ResponseEntity<?> handler(CategoryExistsException e) {
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
+    }
+
+    @ExceptionHandler({EmailNotFoundException.class})
+    private ResponseEntity<?> handler(EmailNotFoundException e) {
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
+    }
+
+    @ExceptionHandler({IncorrectDateFormatException.class})
+    private ResponseEntity<?> handler(IncorrectDateFormatException e) {
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
+    }
+
+
 
  /*   @ExceptionHandler({CouldNotRead.class})
     private ResponseEntity<?> handler(CouldNotRead e) {
