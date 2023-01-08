@@ -1,0 +1,26 @@
+### create tag
+POST http://localhost:8080/tag/create
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE2NzMxNTkyNjAsInVzZXJuYW1lIjoibXlkcmVhbTd1c2FAZ21haWwuY29tIiwicm9sZSI6IlJPTEVfVVNFUiIsImV4cCI6MTY3MzI0NTY2MCwiaXNzIjoiWW91VHViZSB0ZXN0IHBvcnRhbGkifQ.kpBliP6_iqODT5Q_u_61eT88m-VxOBIX0iqwZ2cRXjlxbNhGCKYt5CjsQYkjG_Yh0hYhKMjCCrOwfTW_cdlwDA
+Content-Type: application/json
+
+{
+  "name": "action"
+}
+
+### update tag
+PUT http://localhost:8080/tag/update/2
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE2NzMxNTk2MjksInVzZXJuYW1lIjoibXlsYXB0b3AwNjEyQGdtYWlsLmNvbSIsInJvbGUiOiJST0xFX0FETUlOIiwiZXhwIjoxNjczMjQ2MDI5LCJpc3MiOiJZb3VUdWJlIHRlc3QgcG9ydGFsaSJ9.khSMG3_7U1LXN9Z14n3QKnaSleeezrUVKa2hlc1iqki6yDBCxxwUp4F51uwRY5NmCCyLyKOzmq1O-CLNq4au-g
+Content-Type: application/json
+
+{
+  "name": "IT"
+}
+
+### delete tag
+DELETE http://localhost:8080/tag/delete/3
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE2NzMxNTk2MjksInVzZXJuYW1lIjoibXlsYXB0b3AwNjEyQGdtYWlsLmNvbSIsInJvbGUiOiJST0xFX0FETUlOIiwiZXhwIjoxNjczMjQ2MDI5LCJpc3MiOiJZb3VUdWJlIHRlc3QgcG9ydGFsaSJ9.khSMG3_7U1LXN9Z14n3QKnaSleeezrUVKa2hlc1iqki6yDBCxxwUp4F51uwRY5NmCCyLyKOzmq1O-CLNq4au-g
+
+
+### get tag list
+GET http://localhost:8080/tag/list
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE2NzMxNTkyNjAsInVzZXJuYW1lIjoibXlkcmVhbTd1c2FAZ21haWwuY29tIiwicm9sZSI6IlJPTEVfVVNFUiIsImV4cCI6MTY3MzI0NTY2MCwiaXNzIjoiWW91VHViZSB0ZXN0IHBvcnRhbGkifQ.kpBliP6_iqODT5Q_u_61eT88m-VxOBIX0iqwZ2cRXjlxbNhGCKYt5CjsQYkjG_Yh0hYhKMjCCrOwfTW_cdlwDA

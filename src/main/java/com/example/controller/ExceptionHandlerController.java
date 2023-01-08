@@ -10,6 +10,8 @@ import com.example.exp.email.EmailNotFoundException;
 import com.example.exp.email.IncorrectDateFormatException;
 import com.example.exp.profile.FileTypeIncorrectException;
 import com.example.exp.profile.ProfileNotFoundException;
+import com.example.exp.tag.TagAlreadyExistsException;
+import com.example.exp.tag.TagNotFoundException;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.HttpStatusCode;
@@ -92,6 +94,15 @@ public class ExceptionHandlerController extends ResponseEntityExceptionHandler {
 
     @ExceptionHandler({IncorrectDateFormatException.class})
     private ResponseEntity<?> handler(IncorrectDateFormatException e) {
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
+    }
+
+    @ExceptionHandler({TagAlreadyExistsException.class})
+    private ResponseEntity<?> handler(TagAlreadyExistsException e) {
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
+    }
+    @ExceptionHandler({TagNotFoundException.class})
+    private ResponseEntity<?> handler(TagNotFoundException e) {
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
     }
 
